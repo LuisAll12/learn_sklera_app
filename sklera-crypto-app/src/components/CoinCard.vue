@@ -1,5 +1,9 @@
 <template>
-    <div class="coin-card">
+    <div class="coin-card" v-if="coin">
+        <div class="top-right">
+            <ClockIcon class="top-icon" />
+            <span class="top-text">Last 24h</span>
+        </div>
         <div class="coin-header">
             <img :src="coin.image" class="coin-icon" />
             <div>
@@ -7,7 +11,7 @@
                     {{ coin.name }}
                     <span class="symbol">({{ coin.symbol.toUpperCase() }})</span>
                 </h3>
-                <p class="subtext">Proof of Stake</p>
+                <!-- <p class="subtext">Proof of Stake</p> -->
             </div>
         </div>
 
@@ -24,9 +28,13 @@
             </p>
         </div>
     </div>
+    <div v-else>
+        <p class="loading">Loading...</p>
+    </div>
 </template>
 
 <script setup>
+import { ClockIcon } from '@heroicons/vue/24/outline'
 defineProps({
     coin: Object,
     currency: String,
@@ -35,6 +43,7 @@ defineProps({
 
 <style scoped>
 .coin-card {
+    position: relative; /* Needed for .top-right to be positioned inside */
     background: radial-gradient(circle at bottom, #1c1c1c, #151515 80%);
     color: white;
     border-radius: 1rem;
@@ -93,14 +102,40 @@ defineProps({
     font-size: 0.9rem;
     margin-left: 0.3rem;
 }
+
 .change-negative {
-        color: #f87171;
-        font-size: 0.9rem;
-        margin-left: 0.3rem;
+    color: #f87171;
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
 }
+
 .change-neutral {
-        color: #999;
-        font-size: 0.9rem;
-        margin-left: 0.3rem;
+    color: #999;
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
 }
+
+/* NEW: Top-right corner icon */
+.top-right {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+.top-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+}
+
+.top-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
 </style>

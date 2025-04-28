@@ -44,7 +44,6 @@ const loadCoinData = async () => {
         // Determine if the market gained
         const marketGained = lastPrice > firstPrice;
         percentageChange.value = ((lastPrice - firstPrice) / firstPrice) * 100;
-        console.log('Change over 7 days:', percentageChange.toFixed(2) + '%');
 
 
         const prices = chartJson.prices.map(p => p[1])
@@ -102,8 +101,14 @@ watch(
             </div>
         </div>
         <div class="chart">
-            <Line v-if="chartData" :data="chartData" :options="{ responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }" />
+            <Line
+                v-if="chartData"
+                :data="chartData"
+                :options="{ responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }"/>
         </div>
+    </div>
+    <div v-else>
+        <p class="loading">Loading...</p>
     </div>
 </template>
 
@@ -122,8 +127,8 @@ watch(
     .chart {
     flex-grow: 1;
     height: 100%;
-    margin-top: 1rem;
     position: relative;
+    margin-top: 1rem;
     }
     .header {
         display: flex;

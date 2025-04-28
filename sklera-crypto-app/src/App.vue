@@ -87,14 +87,16 @@ onMounted(() => {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
+  flex: 0 0 auto; /* Don't grow/shrink */
 }
 
 
 .left-side {
   display: flex;
-  flex-direction: column; /* übereinander */
-  flex: 2; /* nimmt 2 Teile vom Platz */
+  flex-direction: column;
+  flex: 2;
   gap: 2rem;
+  overflow: hidden; /* Important to control overflow nicely */
 }
 
 .market-sidebar {
@@ -103,6 +105,18 @@ onMounted(() => {
   border-radius: 1rem;
   max-height: 100%;
   overflow-y: auto;
+}
+
+.main-chart {
+  flex: 1 1 auto; /* Grow to fill remaining space! */
+  min-height: 0;  /* Important so flexbox allows shrinking */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-chart > * {
+  flex: 1 1 auto; /* Allow the <config-chart> to stretch fully */
+  min-height: 0;
 }
 </style>
 
