@@ -4,7 +4,7 @@
     "short_name": "Cryptona",
     "description": "Show crypto prices",
     "author": "Luis",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "offline_enabled": true,
     "thumbnail": "Crypto-Wallpaper.jpg",
     "snapshot": "Crypto-Wallpaper.jpg",

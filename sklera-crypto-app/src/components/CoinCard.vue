@@ -49,9 +49,17 @@ defineProps({
     border-radius: 1rem;
     padding: 1rem;
     width: auto;
-    min-width: 20%;
+    min-width: 230px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
     font-family: "Segoe UI", sans-serif;
+    margin: 10px;
+}
+@media (max-width: 1024px) {
+    .coin-card {
+        width: 100%;
+        min-width: 0; 
+        margin: 10px;
+    }
 }
 
 .coin-header {
@@ -115,7 +123,6 @@ defineProps({
     margin-left: 0.3rem;
 }
 
-/* NEW: Top-right corner icon */
 .top-right {
     position: absolute;
     top: 1rem;

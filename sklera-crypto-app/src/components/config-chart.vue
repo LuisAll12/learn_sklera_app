@@ -7,6 +7,7 @@ import {
     LinearScale,
     CategoryScale
 } from 'chart.js'
+import { ClockIcon } from '@heroicons/vue/24/outline'
 import { Line } from 'vue-chartjs'
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale)
@@ -82,6 +83,10 @@ watch(
 
 <template>
     <div v-if="coinData" class="card">
+        <div class="top-right">
+            <ClockIcon class="top-icon" />
+            <span class="top-text">Last 7 days</span>
+        </div>
         <div class="header">
             <img :src="coinData.image" :alt="coinData.name" width="40" />
             <h3>{{ coinData.name }} ({{ coinData.symbol.toUpperCase() }})</h3>
@@ -114,10 +119,11 @@ watch(
 
 <style scoped>
     .card {
+        position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Chart bleibt unten */
-    background-color: #1a1a1a;
+    background: radial-gradient(circle at bottom, #1c1c1c, #151515 80%);
     color: white;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -167,4 +173,25 @@ watch(
         font-size: 0.9rem;
         margin-left: 0.3rem;
     }
+    .top-right {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+.top-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+}
+
+.top-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
 </style>

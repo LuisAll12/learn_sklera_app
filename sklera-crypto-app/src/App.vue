@@ -52,7 +52,7 @@ onMounted(() => {
     <div class="left-side">
       <!-- Coin-Karten -->
       <section class="coin-cards">
-        <standart-cards :coins="coins" :currency="currency" />
+        <standart-cards id="standart-cards" :coins="coins" :currency="currency" />
       </section>
 
       <!-- Haupt-Chart -->
@@ -87,7 +87,7 @@ onMounted(() => {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
-  flex: 0 0 auto; /* Don't grow/shrink */
+  flex: 0 0 auto; 
 }
 
 
@@ -117,6 +117,37 @@ onMounted(() => {
 .main-chart > * {
   flex: 1 1 auto; /* Allow the <config-chart> to stretch fully */
   min-height: 0;
+}
+@media (max-width: 1024px) {
+  .dashboard {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-side {
+    flex: none;
+    width: 100%;
+  }
+
+  .coin-cards {
+    justify-content: center;
+    justify-content: space-evenly;
+  }
+  #standart-cards{
+    margin: 10px;
+  }
+
+  .main-chart {
+    flex: none;
+    height: auto;
+  }
+
+  .market-sidebar {
+    flex: none;
+    width: 100%;
+    max-height: 300px; /* Begrenze die Höhe auf mobilen Geräten */
+    overflow-y: auto;
+  }
 }
 </style>
 
