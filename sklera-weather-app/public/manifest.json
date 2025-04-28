@@ -1,0 +1,27 @@
+{
+    "manifest_version": 1,
+    "name": "Wetter App",
+    "short_name": "Wetter",
+    "description": "Zeigt das aktuelle Wetter an",
+    "author": "Luis",
+    "version": "1.0.0",
+    "offline_enabled": true,
+    "thumbnail": "CodingBackground.png",
+    "snapshot": "CodingBackground.png",
+    "config": [
+      {
+        "name": "location",
+        "label": "Ort",
+        "type": "string",
+        "default": "Luzern"
+      },
+      {
+        "name": "unit",
+        "label": "Einheit",
+        "type": "select",
+        "values": ["metric", "imperial"],
+        "default": "metric"
+      }
+    ]
+  }
+  

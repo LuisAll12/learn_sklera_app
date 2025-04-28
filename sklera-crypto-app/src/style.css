@@ -1,0 +1,14 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --bg-color: #0d0d0d;
+  --text-color: #070606;
+  --card-bg: #1a1a1a;
+}
+[data-theme='dark'] {
+  --bg-color: #0d0d0d;
+  --text-color: #070606;
+  --card-bg: #1a1a1a;
+}
